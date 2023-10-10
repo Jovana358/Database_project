@@ -1,0 +1,365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.2" last-position="0,0" last-zoom="1" max-obj-count="15"
+	 default-owner="postgres">
+<database name="new_database" is-template="false" allow-conns="true">
+</database>
+
+<schema name="public" layer="0" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<schema name="it_akademija" layer="0" rect-visible="true" fill-color="#e1e1e1">
+</schema>
+
+<schema name="akademija" layer="0" rect-visible="true" fill-color="#e1e1e1">
+</schema>
+
+<table name="it_akademija" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="akademija"/>
+	<position x="100" y="80"/>
+	<column name="id_it_akademije" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="grad">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="it_akademija_pk" type="pk-constr" table="akademija.it_akademija">
+		<columns names="id_it_akademije" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="ucionica" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="akademija"/>
+	<position x="680" y="280"/>
+	<column name="broj_ucionice" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="kapacitet">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="it_akademija">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="ucionica_pk" type="pk-constr" table="akademija.ucionica">
+		<columns names="broj_ucionice" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="smijer" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="akademija"/>
+	<position x="120" y="260"/>
+	<column name="naziv">
+		<type name="text" length="0"/>
+	</column>
+	<column name="id_smijera" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="it_akademija">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="smijer_pk" type="pk-constr" table="akademija.smijer">
+		<columns names="id_smijera" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="kurs" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="akademija"/>
+	<position x="120" y="420"/>
+	<column name="naziv">
+		<type name="text" length="0"/>
+	</column>
+	<column name="id_kursa" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cijena">
+		<type name="float" length="0"/>
+	</column>
+	<column name="trajanje">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="smijer">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="kurs_pk" type="pk-constr" table="akademija.kurs">
+		<columns names="id_kursa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="asistent" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="akademija"/>
+	<position x="760" y="460"/>
+	<column name="ime_i_prezime">
+		<type name="text" length="0"/>
+	</column>
+	<column name="jmbg_asistenta" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="kurs">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="asistent_pk" type="pk-constr" table="akademija.asistent">
+		<columns names="jmbg_asistenta" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="grupa" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="akademija"/>
+	<position x="1020" y="380"/>
+	<column name="naziv">
+		<type name="text" length="0"/>
+	</column>
+	<column name="id_grupe" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="kurs">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="grupa_pk" type="pk-constr" table="akademija.grupa">
+		<columns names="id_grupe" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="racun" layer="0" collapse-mode="2" max-obj-count="3">
+	<schema name="akademija"/>
+	<position x="415" y="265"/>
+	<column name="iznos">
+		<type name="float" length="0"/>
+	</column>
+	<column name="id_racuna" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="polaznik">
+		<type name="text" length="0"/>
+	</column>
+	<constraint name="racun_pk" type="pk-constr" table="akademija.racun">
+		<columns names="id_racuna" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="polaznik" layer="0" collapse-mode="2" max-obj-count="4">
+	<schema name="akademija"/>
+	<position x="449" y="13"/>
+	<column name="ime_i_prezime">
+		<type name="text" length="0"/>
+	</column>
+	<column name="jmbg_polaznika" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="kurs">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="grupa">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="polaznik_pk" type="pk-constr" table="akademija.polaznik">
+		<columns names="jmbg_polaznika" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="cas" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="akademija"/>
+	<position x="417" y="454"/>
+	<column name="datum">
+		<type name="date" length="0"/>
+	</column>
+	<column name="vrijeme">
+		<type name="time" length="0"/>
+	</column>
+	<column name="id_casa" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="grupa">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ucionica">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="cas_pk" type="pk-constr" table="akademija.cas">
+		<columns names="id_casa" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="predavac" layer="0" collapse-mode="2" max-obj-count="6">
+	<schema name="akademija"/>
+	<position x="960" y="140"/>
+	<column name="ime_i_prezime">
+		<type name="text" length="0"/>
+	</column>
+	<column name="jmbg_predavaca" not-null="true">
+		<type name="text" length="0"/>
+	</column>
+	<column name="it_akademija">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="kurs">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="specijalnost">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="predavac_pk" type="pk-constr" table="akademija.predavac">
+		<columns names="jmbg_predavaca" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="specijalnost" layer="0" collapse-mode="2" max-obj-count="2">
+	<schema name="akademija"/>
+	<position x="713" y="35"/>
+	<column name="naziv">
+		<type name="text" length="0"/>
+	</column>
+	<column name="id_specijalnosti" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="specijalnost_pk" type="pk-constr" table="akademija.specijalnost">
+		<columns names="id_specijalnosti" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<constraint name="it_akademija_ucionica" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.it_akademija" table="akademija.ucionica">
+	<columns names="it_akademija" ref-type="src-columns"/>
+	<columns names="id_it_akademije" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="smijer_it_akademija" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.it_akademija" table="akademija.smijer">
+	<columns names="it_akademija" ref-type="src-columns"/>
+	<columns names="id_it_akademije" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="kurs_smijer" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.smijer" table="akademija.kurs">
+	<columns names="smijer" ref-type="src-columns"/>
+	<columns names="id_smijera" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="asistent_kurs" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.kurs" table="akademija.asistent">
+	<columns names="kurs" ref-type="src-columns"/>
+	<columns names="id_kursa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="grupa_kurs" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.kurs" table="akademija.grupa">
+	<columns names="kurs" ref-type="src-columns"/>
+	<columns names="id_kursa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="racun_polaznik" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.polaznik" table="akademija.racun">
+	<columns names="polaznik" ref-type="src-columns"/>
+	<columns names="jmbg_polaznika" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="polaznik_kurs" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.kurs" table="akademija.polaznik">
+	<columns names="kurs" ref-type="src-columns"/>
+	<columns names="id_kursa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="polaznik_grupa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.grupa" table="akademija.polaznik">
+	<columns names="grupa" ref-type="src-columns"/>
+	<columns names="id_grupe" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cas_grupa" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.grupa" table="akademija.cas">
+	<columns names="grupa" ref-type="src-columns"/>
+	<columns names="id_grupe" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="cas_ucionica" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.ucionica" table="akademija.cas">
+	<columns names="ucionica" ref-type="src-columns"/>
+	<columns names="broj_ucionice" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="predavac_it_akademija" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.it_akademija" table="akademija.predavac">
+	<columns names="it_akademija" ref-type="src-columns"/>
+	<columns names="id_it_akademije" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="predavac_kurs" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.kurs" table="akademija.predavac">
+	<columns names="kurs" ref-type="src-columns"/>
+	<columns names="id_kursa" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="predavac_specijalnost" type="fk-constr" comparison-type="MATCH FULL"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="akademija.specijalnost" table="akademija.predavac">
+	<columns names="specijalnost" ref-type="src-columns"/>
+	<columns names="id_specijalnosti" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_ucionica_it_akademija" type="relfk" layer="0"
+	 src-table="akademija.ucionica"
+	 dst-table="akademija.it_akademija" reference-fk="it_akademija_ucionica"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_smijer_it_akademija" type="relfk" layer="0"
+	 src-table="akademija.smijer"
+	 dst-table="akademija.it_akademija" reference-fk="smijer_it_akademija"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_kurs_smijer" type="relfk" layer="0"
+	 src-table="akademija.kurs"
+	 dst-table="akademija.smijer" reference-fk="kurs_smijer"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_asistent_kurs" type="relfk" layer="0"
+	 src-table="akademija.asistent"
+	 dst-table="akademija.kurs" reference-fk="asistent_kurs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_grupa_kurs" type="relfk" layer="0"
+	 src-table="akademija.grupa"
+	 dst-table="akademija.kurs" reference-fk="grupa_kurs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_racun_polaznik" type="relfk" layer="0"
+	 src-table="akademija.racun"
+	 dst-table="akademija.polaznik" reference-fk="racun_polaznik"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_polaznik_kurs" type="relfk" layer="0"
+	 src-table="akademija.polaznik"
+	 dst-table="akademija.kurs" reference-fk="polaznik_kurs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_polaznik_grupa" type="relfk" layer="0"
+	 src-table="akademija.polaznik"
+	 dst-table="akademija.grupa" reference-fk="polaznik_grupa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cas_grupa" type="relfk" layer="0"
+	 src-table="akademija.cas"
+	 dst-table="akademija.grupa" reference-fk="cas_grupa"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_cas_ucionica" type="relfk" layer="0"
+	 src-table="akademija.cas"
+	 dst-table="akademija.ucionica" reference-fk="cas_ucionica"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_predavac_it_akademija" type="relfk" layer="0"
+	 src-table="akademija.predavac"
+	 dst-table="akademija.it_akademija" reference-fk="predavac_it_akademija"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_predavac_kurs" type="relfk" layer="0"
+	 src-table="akademija.predavac"
+	 dst-table="akademija.kurs" reference-fk="predavac_kurs"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_predavac_specijalnost" type="relfk" layer="0"
+	 src-table="akademija.predavac"
+	 dst-table="akademija.specijalnost" reference-fk="predavac_specijalnost"
+	 src-required="false" dst-required="false"/>
+
+</dbmodel>
